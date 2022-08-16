@@ -1,11 +1,12 @@
 <template>
     <div id="completed">
         
-        <div class=" service-container">
+        <div v-if="prepared.length > 0 " class=" service-container">
             <h3 class="text-center">Completed</h3>
             <ul class="list-group list-group-flush text-center">
-                <li v-for="data in prepared" :key="data.id" class="list-group-item">
-                    <span>{{data.text}}</span>    
+                <li v-for="data in prepared" :key="data.id" class="list-group-item d-flex justify-content-between">
+                    <span>{{data.text}}</span>  
+                    <button @click="$emit('delete-item',data)" class="btn ms-2"><img src="../assets/trash-can-solid.svg" alt=""></button>  
                 </li>
                 
             </ul>
@@ -28,6 +29,9 @@ export default {
 ul{
     border-radius: 10px;
 
+}
+img{
+    width: 14px;
 }
 
 </style>

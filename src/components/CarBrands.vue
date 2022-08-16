@@ -1,6 +1,6 @@
 <template>
     <div id="carbrand">
-        <div class=" car-container">
+        <div class=" car-container " v-if="myData.length > 0">
             <h3 class="text-center">Car Brand List</h3>
             <ul  class="list-group list-group-flush">
                 <li class="pt-2" v-for="item in myData" :key="item.id">
