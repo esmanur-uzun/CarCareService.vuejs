@@ -1,12 +1,16 @@
 <template>
     <div id="carbrand">
         <div class=" car-container">
-            <ul class="list-group list-group-flush">
-                <li v-for="item in myData" :key="item.id" class="list-group-item d-flex justify-content-between">
-                    <span class="pt-2">{{item.text}}</span>
-                    <div>
-                        <button @click="$emit('care-item',item)"  class="btn me-1"><img src="../assets/gear-solid.svg" alt=""></button>
-                        <button @click="$emit('delete-item',item)" class="btn"><img src="../assets/trash-can-solid.svg" alt=""></button>                       
+            <h3 class="text-center">Car Brand List</h3>
+            <ul  class="list-group list-group-flush">
+                <li class="pt-2" v-for="item in myData" :key="item.id">
+                    <div v-if="!item.careService" class="d-flex justify-content-between " >
+                        <span   class="pt-2">{{item.text}}</span>
+                        <div  class="d-flex">
+                            <input id="completed" type="checkbox" v-model="item.careService">
+                            <button @click="$emit('delete-item',item)" class="btn ms-2"><img src="../assets/trash-can-solid.svg" alt=""></button> 
+                        </div>
+                                              
                     </div>
                 </li>
             </ul>
@@ -21,17 +25,20 @@ export default {
 </script>
 
 <style scoped>
-.list-group-item{
-    background-color: #577590;
-    color: #fff;
-}
 ul{
     border-radius: 10px;
+    list-style-type: none;
+    color: #577590;
+    font-weight: bold;
+
 }
 img{
     width:14px ;
 }
 button{
-    background-color: #F4F6F5;
+    background-color: #577590;
+}
+input{
+    width: 15px;
 }
 </style>

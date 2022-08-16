@@ -1,12 +1,13 @@
 <template>
     <div id="completed">
+        
         <div class=" service-container">
+            <h3 class="text-center">Completed</h3>
             <ul class="list-group list-group-flush text-center">
-                <li class="list-group-item">An item </li>
-                <li class="list-group-item">A second item</li>
-                <li class="list-group-item">A third item</li>
-                <li class="list-group-item">A fourth item</li>
-                <li class="list-group-item">And a fifth one</li>
+                <li v-for="data in prepared" :key="data.id" class="list-group-item">
+                    <span>{{data.text}}</span>    
+                </li>
+                
             </ul>
         </div>
     </div>
@@ -14,7 +15,8 @@
 
 <script>
 export default {
-    name: "completed"
+    name: "completed",
+    props: ["prepared"]
 }
 </script>
 

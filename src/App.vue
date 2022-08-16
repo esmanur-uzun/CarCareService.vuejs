@@ -24,19 +24,29 @@ export default{
         careService: false,
         prepared: false
 
-      })
-     
+      })     
     },
     deleteItem(item){
       this.carList = this.carList.filter( t => t !== item)
     },
-    carCareService(event){
-      console.log(event)
+    carCareService(){
       return this.carList.filter((item) => item.careService)
-      // return event.careService
-
+    },
+    completedCar(){
+      return this.carList.filter((p) => p.prepared)
+    }    
+  },
+  created (){
+    this.carList = JSON.parse(localStorage.getItem('cars') || '[]')
+  },
+  watch:{
+      carList:{
+        deep: true,
+        handler(){
+          localStorage.setItem('cars',JSON.stringify(this.carList))
+        }
+      }
     }
-  }
 }
 </script>
 
@@ -44,12 +54,12 @@ export default{
   <div id="app">
     <div class=" app-container">
       <title-car @add-car="addCarBrand"></title-car>
-      <div class="row d-flex justify-content-around mt-5">
-        <car-brands :myData="carList" @delete-item="deleteItem" @care-item="carCareService" class="col-lg-4 col-md-5 col-9 mb-4"></car-brands>
+      <div class="container d-flex justify-content-around mt-5">
+        <car-brands :myData="carList" @delete-item="deleteItem" class="col-lg-4 col-md-5 col-9 mb-4"></car-brands>
         <care-service :carCare ="carCareService(event)" class="col-lg-4 col-md-5 col-9"></care-service>
       </div>
       <div class="mt-5 d-flex justify-content-center">
-        <completed class="col-lg-6 col-md-8 col-10"></completed>
+        <completed :prepared ="completedCar(event)" class="col-lg-6 col-md-8 col-10"></completed>
       </div>
     </div>
   </div>
