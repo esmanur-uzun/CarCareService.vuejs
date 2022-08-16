@@ -54,9 +54,9 @@ export default{
   <div id="app">
     <div class=" app-container">
       <title-car @add-car="addCarBrand"></title-car>
-      <div class=" d-flex justify-content-around mt-5 row">
-        <car-brands :myData="carList" @delete-item="deleteItem" class="col-lg-4 col-md-5 col-10 mb-5"></car-brands>
-        <care-service :carCare ="carCareService(event)" class="col-lg-4 col-md-5 col-10"></care-service>
+      <div class=" d-flex justify-content-around mt-5 col-12 flex-wrap">
+        <car-brands :myData="carList" @delete-item="deleteItem" class="col-lg-4 col-md-5 col-xs-12 col-10 mb-5"></car-brands>
+        <care-service :carCare ="carCareService(event)" class="col-lg-4 col-md-5 col-xs-12 col-10"></care-service>
       </div>
       <div class="mt-5 d-flex justify-content-center">
         <completed @delete-item="deleteItem" :prepared ="completedCar(event)" class="col-lg-6 col-md-8 col-10"></completed>
